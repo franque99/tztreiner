@@ -1,22 +1,19 @@
-const range = {
-  "QQ": "raise", "JJ": "raise", "TT": "raise", "99": "raise", "88": "raise",
-  "77": "raise", "66": "call", "55": "call", "44": "call",
-  "AQs": "raise", "AJs": "raise", "ATs": "raise", "KQs": "raise", "KJs": "call",
-  "QJs": "call", "JTs": "call", "T9s": "call", "98s": "call",
-  "AQo": "raise", "AJo": "raise", "KQo": "call"
+const hands = {
+  "AKs": "Raise", "AQs": "Raise", "AJs": "Raise", "ATs": "Raise", "A9s": "Call",
+  "KQs": "Raise", "KJs": "Raise", "KTs": "Call", "QJs": "Call",
+  "JTs": "Call", "T9s": "Call", "98s": "Call", "87s": "Call", "76s": "Call",
+  "AKo": "Raise", "AQo": "Raise", "AJo": "Call", "KQo": "Call"
 };
 
-let currentHand = "";
-
 function getRandomHand() {
-  const keys = Object.keys(range);
-  const hand = keys[Math.floor(Math.random() * keys.length)];
-  return hand;
+  const keys = Object.keys(hands);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return randomKey;
 }
 
 function displayHand(hand) {
-  const card1 = hand[0];
-  const card2 = hand[1];
+  const rank1 = hand[0];
+  const rank2 = hand[1];
   const suited = hand[2] === "s";
 
   const suits = ["♠", "♥", "♦", "♣"];
@@ -31,32 +28,25 @@ function displayHand(hand) {
     }
   }
 
-  document.getElementById("hand").innerHTML = `
-    <div class="card">${card1}${suit1}</div>
-    <div class="card">${card2}${suit2}</div>
-  `;
+  document.getElementById("card1").textContent = `${rank1}${suit1}`;
+  document.getElementById("card2").textContent = `${rank2}${suit2}`;
 }
 
-function newHand() {
-  currentHand = getRandomHand();
-  displayHand(currentHand);
+function generateNewHand() {
+  const newHand = getRandomHand();
+  displayHand(newHand);
+
+  document.querySelectorAll(".fold-btn, .call-btn, .raise-btn").forEach(btn => {
+    btn.onclick = () => {
+      const action = btn.textContent;
+      const correctAction = hands[newHand];
+      const resultText = action === correctAction ? "✅ Correto!" : `❌ Errado! Ação correta: ${correctAction}`;
+      document.getElementById("result").textContent = resultText;
+    };
+  });
+
   document.getElementById("result").textContent = "";
 }
 
-function checkAnswer(action) {
-  const correct = range[currentHand];
-  if (!correct) {
-    document.getElementById("result").textContent = "No data for this hand.";
-    return;
-  }
-
-  if (action === correct) {
-    document.getElementById("result").textContent = "✅ Correct!";
-    document.getElementById("result").style.color = "lightgreen";
-  } else {
-    document.getElementById("result").textContent = `❌ Wrong. Correct: ${correct.toUpperCase()}`;
-    document.getElementById("result").style.color = "red";
-  }
-}
-
-window.onload = newHand;
+// Inicializa primeira mão
+generateNewHand();
