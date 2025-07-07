@@ -1,75 +1,82 @@
 body {
   font-family: Arial, sans-serif;
-  background: #0d0d0d;
-  color: #f2f2f2;
   margin: 0;
-  padding: 0;
+  background: #111;
+  color: #fff;
+  line-height: 1.6;
 }
 
 header {
-  background: #1a1a1a;
-  padding: 20px;
+  background: #222;
+  padding: 1rem;
   text-align: center;
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
 }
 
 nav a {
-  color: #00cc66;
+  color: #00ffcc;
   text-decoration: none;
   font-weight: bold;
 }
 
 section {
-  padding: 40px 20px;
-  border-bottom: 1px solid #222;
+  padding: 2rem;
+  border-bottom: 1px solid #333;
 }
 
 footer {
-  background: #1a1a1a;
   text-align: center;
-  padding: 20px;
-}
-
-label, select, button {
-  display: block;
-  margin: 10px 0;
-  font-size: 16px;
+  padding: 1rem;
+  background: #222;
+  color: #aaa;
 }
 
 button {
   background: #00cc66;
-  color: #000;
+  color: white;
+  padding: 0.6rem 1rem;
   border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  border-radius: 4px;
 }
 
-.grade {
+select {
+  margin-left: 0.5rem;
+  padding: 0.4rem;
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+}
+
+#grade-range {
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(13, 1fr); /* 13 colunas */
+  gap: 4px;
   margin-top: 10px;
+  max-width: 650px;
 }
 
-.grade div {
-  background-color: #333;
-  padding: 5px;
+.mao {
+  background: #333;
+  padding: 8px;
   text-align: center;
   border-radius: 4px;
-  font-size: 12px;
+  font-weight: bold;
+  font-size: 13px;
 }
 
-.grade div.ativo {
-  background-color: #00cc66;
-  color: #000;
-  font-weight: bold;
+.mao.ativo {
+  background: #00cc66;
+  color: #fff;
 }
