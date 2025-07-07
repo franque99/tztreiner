@@ -1,20 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tztreiner - GTO Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
   <header>
     <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
   </header>
 
   <main>
-    <div id="cards"></div>
-    <div class="buttons">
-      <button onclick="answer('fold')">Fold</button>
-      <button onclick="answer('call')">Call</button>
-      <button onclick="answer('raise')">Raise</button>
+    <div class="table">
+      <div id="hand" class="hand"></div>
+      <div class="buttons">
+        <button onclick="checkAnswer('fold')" class="btn red">Fold</button>
+        <button onclick="checkAnswer('call')" class="btn yellow">Call</button>
+        <button onclick="checkAnswer('raise')" class="btn green">Raise</button>
+      </div>
+      <div id="result" class="result"></div>
+      <button onclick="newHand()" class="new-hand">New Hand</button>
     </div>
-    <p id="result"></p>
-    <button onclick="newHand()" class="new-hand">New Hand</button>
   </main>
 
   <footer>
     <p>© 2025 <strong>tztreiner</strong></p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
+</html>
+
