@@ -1,46 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🧠 GTO Quiz - CO vs BU (40bb)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tztreiner - GTO MTT Trainer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="header">
-    <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
-  </div>
+  <header>
+    <h1>tztreiner - GTO MTT Trainer</h1>
+    <nav>
+      <ul>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#simulator">Push/Fold</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- MESA COM JOGADORES -->
-  <div class="table-container">
-    <div class="poker-table">
-      <!-- Jogador BU com botão D -->
-      <div class="player bottomright">
-        BU
-        <div class="dealer-button">D</div>
+  <main>
+    <!-- MESA COM CARTAS -->
+    <section class="poker-table">
+      <div class="table">
+        <div class="card flop">🂠</div>
+        <div class="card flop">🂠</div>
+        <div class="card flop">🂠</div>
+        <div class="card turn">🂠</div>
+        <div class="card river">🂠</div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE QUIZ GTO -->
+    <section id="quiz" class="quiz-section">
+      <h2>🧠 GTO Quiz</h2>
+      <p>Decide the best action based on GTO for CO vs BU with 40bb.</p>
+
+      <h1 id="hand" class="hand-display">AKs</h1>
+
+      <div class="actions">
+        <button id="foldBtn">Fold</button>
+        <button id="callBtn">Call</button>
+        <button id="raiseBtn">Raise</button>
+        <button id="newHandBtn">New Hand</button>
       </div>
 
-      <!-- Jogadores adicionais (exemplo) -->
-      <div class="player topright">SB</div>
-      <div class="player topleft">BB</div>
-      <div class="player bottomleft">CO</div>
-    </div>
-  </div>
-
-  <!-- Cartas e ações -->
-  <div class="quiz-container">
-    <div id="hand" class="hand"></div>
-    <div class="actions">
-      <button onclick="checkAnswer('Fold')">Fold</button>
-      <button onclick="checkAnswer('Call')">Call</button>
-      <button onclick="checkAnswer('Raise')">Raise</button>
-      <button onclick="newHand()">New Hand</button>
-    </div>
-    <div id="feedback" class="feedback"></div>
-  </div>
+      <div id="feedback" class="feedback"></div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 <strong>tztreiner</strong></p>
+    <p>&copy; 2025 tztreiner</p>
   </footer>
 
   <script src="script.js"></script>
