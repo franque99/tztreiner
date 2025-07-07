@@ -1,55 +1,62 @@
 const range = {
-  'QQ': 'raise', 'KK': 'raise', 'AA': 'raise',
-  'AKs': 'raise', 'AQs': 'raise', 'AJs': 'raise', 'ATs': 'raise',
-  'KQs': 'raise', 'KJs': 'raise', 'QJs': 'raise',
-  'JTs': 'raise', 'T9s': 'raise', '98s': 'raise',
-  '77': 'raise', '88': 'raise', '99': 'raise', 'TT': 'raise',
-  '66': 'call', '55': 'call', '44': 'fold', '33': 'fold',
-  'AJo': 'raise', 'KQo': 'raise', 'QJo': 'call',
-  '22': 'fold', '87s': 'call', '76s': 'call',
-  'A9s': 'call', 'A8s': 'call', 'A5s': 'call', 'A4s': 'call',
+  "QQ": "raise", "JJ": "raise", "TT": "raise", "99": "raise", "88": "raise",
+  "77": "raise", "66": "call", "55": "call", "44": "call",
+  "AQs": "raise", "AJs": "raise", "ATs": "raise", "KQs": "raise", "KJs": "call",
+  "QJs": "call", "JTs": "call", "T9s": "call", "98s": "call",
+  "AQo": "raise", "AJo": "raise", "KQo": "call"
 };
 
-function generateHand() {
-  const hands = Object.keys(range);
-  const index = Math.floor(Math.random() * hands.length);
-  return hands[index];
+let currentHand = "";
+
+function getRandomHand() {
+  const keys = Object.keys(range);
+  const hand = keys[Math.floor(Math.random() * keys.length)];
+  return hand;
 }
 
-let currentHand = '';
+function displayHand(hand) {
+  const card1 = hand[0];
+  const card2 = hand[1];
+  const suited = hand[2] === "s";
 
-function displayCards(hand) {
-  const suits = ['♥️', '♠️', '♦️', '♣️'];
-  const c1 = hand[0];
-  const c2 = hand[1];
-  const suited = hand[2] === 's';
-  const offsuit = hand[2] === 'o';
+  const suits = ["♠", "♥", "♦", "♣"];
   const suit1 = suits[Math.floor(Math.random() * 4)];
-  const suit2 = suited ? suit1 : suits.find(s => s !== suit1);
+  let suit2 = suits[Math.floor(Math.random() * 4)];
 
-  document.getElementById('cards').innerHTML = `
-    ${c1} ${suit1} ${c2} ${suit2}
+  if (suited) {
+    suit2 = suit1;
+  } else {
+    while (suit2 === suit1) {
+      suit2 = suits[Math.floor(Math.random() * 4)];
+    }
+  }
+
+  document.getElementById("hand").innerHTML = `
+    <div class="card">${card1}${suit1}</div>
+    <div class="card">${card2}${suit2}</div>
   `;
 }
 
 function newHand() {
-  document.getElementById('result').textContent = '';
-  currentHand = generateHand();
-  displayCards(currentHand);
+  currentHand = getRandomHand();
+  displayHand(currentHand);
+  document.getElementById("result").textContent = "";
 }
 
-function answer(action) {
-  if (!currentHand) return;
+function checkAnswer(action) {
   const correct = range[currentHand];
-  const result = document.getElementById('result');
+  if (!correct) {
+    document.getElementById("result").textContent = "No data for this hand.";
+    return;
+  }
+
   if (action === correct) {
-    result.textContent = '✅ Correct play!';
-    result.style.color = 'lime';
+    document.getElementById("result").textContent = "✅ Correct!";
+    document.getElementById("result").style.color = "lightgreen";
   } else {
-    result.textContent = `❌ Incorrect! Correct action: ${correct.toUpperCase()}`;
-    result.style.color = 'red';
+    document.getElementById("result").textContent = `❌ Wrong. Correct: ${correct.toUpperCase()}`;
+    document.getElementById("result").style.color = "red";
   }
 }
 
-// Start with a hand
-newHand();
+window.onload = newHand;
