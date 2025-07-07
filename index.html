@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GTO Quiz - CO vs BU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧠 GTO Quiz - CO vs BU (40bb)</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="header">
-    🧠 GTO Quiz - CO vs BU (40bb)
+    <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
   </div>
 
-  <div class="table">
-    <!-- Players -->
-    <div class="player top">UTG</div>
-    <div class="player topright">HJ</div>
-    <div class="player right">CO</div>
-    <div class="player bottomright">
-      BU
-      <div class="dealer-button">D</div>
-    </div>
-    <div class="player bottomleft">SB</div>
-    <div class="player left">BB</div>
+  <!-- MESA COM JOGADORES -->
+  <div class="table-container">
+    <div class="poker-table">
+      <!-- Jogador BU com botão D -->
+      <div class="player bottomright">
+        BU
+        <div class="dealer-button">D</div>
+      </div>
 
-    <!-- Cards -->
-    <div class="cards">
-      <div id="card1" class="card">?</div>
-      <div id="card2" class="card">?</div>
+      <!-- Jogadores adicionais (exemplo) -->
+      <div class="player topright">SB</div>
+      <div class="player topleft">BB</div>
+      <div class="player bottomleft">CO</div>
     </div>
   </div>
 
-  <div class="action-box">
-    <button class="btn fold">Fold</button>
-    <button class="btn call">Call</button>
-    <button class="btn raise">Raise</button>
-    <button class="btn new-hand" onclick="generateHand()">New Hand</button>
+  <!-- Cartas e ações -->
+  <div class="quiz-container">
+    <div id="hand" class="hand"></div>
+    <div class="actions">
+      <button onclick="checkAnswer('Fold')">Fold</button>
+      <button onclick="checkAnswer('Call')">Call</button>
+      <button onclick="checkAnswer('Raise')">Raise</button>
+      <button onclick="newHand()">New Hand</button>
+    </div>
+    <div id="feedback" class="feedback"></div>
   </div>
 
   <footer>
-    © 2025 <strong>tztreiner</strong>
+    <p>© 2025 <strong>tztreiner</strong></p>
   </footer>
 
   <script src="script.js"></script>
