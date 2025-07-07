@@ -1,0 +1,17 @@
+[
+  {
+    "id": "EP_vs_MP_1",
+    "heroPosition": "EP",
+    "villainPosition": "MP",
+    "stackSize": "40bb",
+    "heroHand": "AKs",
+    "board": "7h4c2s",
+    "action": "Hero open EP, MP call. Flop 7h4c2s, Hero?",
+    "villainAction": "Check",
+    "solverDecision": "Bet 33%",
+    "gtoExplanation": "AKs tem overcards e pode forçar folds de mãos médias.",
+    "correctPlay": "Bet 33%",
+    "options": ["Check", "Bet 33%", "Bet 66%"],
+    "category": "EP vs MP"
+  }
+]

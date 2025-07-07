@@ -1,55 +1,28 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>tztreiner - GTO MTT Trainer</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>GTO Trainer Simples</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>tztreiner - GTO MTT Trainer</h1>
-    <nav>
-      <ul>
-        <li><a href="#quiz">Quiz</a></li>
-        <li><a href="#simulator">Push/Fold</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="mesa">
+    <div class="cartas">
+      <div class="carta" id="carta1">?</div>
+      <div class="carta" id="carta2">?</div>
+    </div>
+  </div>
 
-  <main>
-    <!-- MESA COM CARTAS -->
-    <section class="poker-table">
-      <div class="table">
-        <div class="card flop">🂠</div>
-        <div class="card flop">🂠</div>
-        <div class="card flop">🂠</div>
-        <div class="card turn">🂠</div>
-        <div class="card river">🂠</div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO DE QUIZ GTO -->
-    <section id="quiz" class="quiz-section">
-      <h2>🧠 GTO Quiz</h2>
-      <p>Decide the best action based on GTO for CO vs BU with 40bb.</p>
-
-      <h1 id="hand" class="hand-display">AKs</h1>
-
-      <div class="actions">
-        <button id="foldBtn">Fold</button>
-        <button id="callBtn">Call</button>
-        <button id="raiseBtn">Raise</button>
-        <button id="newHandBtn">New Hand</button>
-      </div>
-
-      <div id="feedback" class="feedback"></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 tztreiner</p>
-  </footer>
+  <div class="container">
+    <h1>GTO Trainer 40bb</h1>
+    <div id="quiz-box">
+      <p id="action"></p>
+      <div id="options"></div>
+      <p id="feedback"></p>
+      <button id="next-btn">Próxima Mão</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
