@@ -1,123 +1,78 @@
 body {
-  background-color: #121212;
-  color: #fff;
   font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: #f2f2f2;
   margin: 0;
   padding: 0;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
+header {
+  background: #1a1a1a;
   padding: 20px;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 20px;
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #00ffcc;
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 16px;
-}
-
-select {
-  margin-left: 8px;
-  padding: 4px 8px;
-  background-color: #1e1e1e;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 4px;
-}
-
-.table {
-  border: 1px solid #ccc;
-  border-radius: 12px;
+.container {
+  max-width: 600px;
+  margin: 30px auto;
   padding: 20px;
-  background-color: #1a1a2e;
-  position: relative;
-  margin-bottom: 20px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffcc33;
 }
 
-.pot-info {
-  margin-bottom: 20px;
-}
-
-.seats {
-  display: grid;
-  grid-template-areas:
-    ". utg1 lj hj co ."
-    "utg . . . . bu"
-    ". bb . pot . sb";
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  align-items: center;
-  justify-items: center;
-}
-
-.seat {
-  background-color: #09343c;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  min-width: 70px;
+.quiz h2 {
+  text-align: center;
+  color: #00ffcc;
 }
 
 .cards {
-  margin-top: 5px;
-  background-color: #00b894;
-  color: #fff;
-  padding: 4px 6px;
-  border-radius: 4px;
-  display: inline-block;
-  font-size: 16px;
+  font-size: 48px;
+  text-align: center;
+  margin: 20px 0;
 }
 
-.seat span {
-  display: block;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.actions {
+.buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 button {
   padding: 10px 20px;
+  font-size: 18px;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.fold {
-  background-color: #636e72;
-  color: white;
+button:hover {
+  opacity: 0.9;
 }
 
-.call {
-  background-color: #0984e3;
-  color: white;
+button:nth-child(1) { background-color: #ff4d4d; } /* Fold */
+button:nth-child(2) { background-color: #ffd11a; } /* Call */
+button:nth-child(3) { background-color: #4dff4d; } /* Raise */
+
+.next {
+  display: block;
+  margin: 0 auto;
+  background-color: #00ccff;
+  color: #000;
 }
 
-.raise {
-  background-color: #d63031;
-  color: white;
-}
-
-.next-hand {
-  background-color: #6c5ce7;
-  color: white;
-  margin-top: 10px;
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #1a1a1a;
+  margin-top: 30px;
+  font-size: 14px;
 }
