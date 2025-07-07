@@ -1,139 +1,134 @@
 /* Reset básico */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0b0b0b;
+  color: #f2f2f2;
+  line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
   background-color: #111;
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px 0;
   text-align: center;
 }
 
-.header {
-  padding: 1rem;
-  background-color: #000;
+header h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #00ffcc;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #00ffcc;
+}
+
+/* Mesa de poker */
+.poker-table {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.table {
+  background-color: #14532d;
+  border-radius: 100px;
+  padding: 40px 60px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+}
+
+.card {
+  font-size: 40px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 10px;
+  width: 60px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Quiz Section */
+.quiz-section {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+}
+
+.quiz-section h2 {
+  margin-bottom: 10px;
+  color: #00ffcc;
+}
+
+.quiz-section p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.hand-display {
+  font-size: 48px;
+  margin-bottom: 20px;
   color: #fff;
-  border-bottom: 2px solid #0ff;
-}
-
-.quiz-container {
-  margin-top: 2rem;
-}
-
-.actions {
-  margin-top: 1.5rem;
 }
 
 .actions button {
-  padding: 0.5rem 1.2rem;
-  margin: 0.3rem;
-  font-size: 1rem;
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: 0.2s;
+  color: #fff;
+  background-color: #333;
 }
 
-.actions button:nth-child(1) {
-  background-color: #e74c3c;
-  color: #fff;
-}
-.actions button:nth-child(2) {
-  background-color: #f1c40f;
-  color: #000;
-}
-.actions button:nth-child(3) {
-  background-color: #2ecc71;
-  color: #fff;
-}
-.actions button:nth-child(4) {
-  background-color: #eee;
+.actions button:hover {
+  background-color: #00ffcc;
   color: #000;
 }
 
 .feedback {
-  margin-top: 1rem;
+  margin-top: 20px;
+  font-size: 20px;
   font-weight: bold;
-  font-size: 1.2rem;
 }
 
+/* Rodapé */
 footer {
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #888;
-}
-
-/* ===== MESA E POSIÇÕES ===== */
-
-.table-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.poker-table {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  border: 3px solid #0ff;
-  border-radius: 50%;
-  margin: 0 auto;
-}
-
-/* Estilo dos jogadores */
-.player {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #333;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-/* Botão do Dealer */
-.dealer-button {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
-  color: #000;
-  border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #000;
-}
-
-/* Posições ao redor da mesa */
-.bottomright {
-  bottom: 10px;
-  right: 30px;
-}
-
-.bottomleft {
-  bottom: 10px;
-  left: 30px;
-}
-
-.topright {
-  top: 10px;
-  right: 30px;
-}
-
-.topleft {
-  top: 10px;
-  left: 30px;
-}
-
-/* Cartas */
-.hand {
-  font-size: 2rem;
-  margin-top: 1rem;
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #666;
+  margin-top: 60px;
 }
