@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>tztreiner - GTO MTT Trainer</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -35,7 +36,6 @@
 
   <section id="simulador">
     <h2>🧮 Simulador Push/Fold</h2>
-
     <label for="posicao">Posição:</label>
     <select id="posicao">
       <option value="SB">SB</option>
@@ -94,53 +94,38 @@
     ];
 
     const ranges = {
-      "SB-10": ["22+", "A2s+", "K2s+", "Q4s+", "J7s+", "T7s+", "97s+", "86s+", "75s+", "64s+", "54s", "A2o+", "K4o+", "Q8o+", "J9o+", "T9o"],
-      "BTN-10": ["22+", "A2s+", "K2s+", "Q6s+", "J8s+", "T8s+", "98s", "87s", "A2o+", "K7o+", "Q9o+", "J9o+", "T9o"],
-      "CO-10": ["22+", "A5s+", "K8s+", "Q9s+", "JTs", "T9s", "A9o+", "KTo+", "QJo"],
-      "HJ-10": ["33+", "A9s+", "KTs+", "QTs+", "JTs", "ATo+", "KQo"],
-      "MP-10": ["44+", "ATs+", "KTs+", "QJs", "AJo+", "KQo"],
-      "UTG-10": ["55+", "ATs+", "KQs", "AQo+"],
-      "SB-15": ["22+", "A2s+", "K2s+", "Q3s+", "J6s+", "T7s+", "96s+", "85s+", "74s+", "63s+", "52s+", "42s+", "32s", "A2o+", "K6o+", "Q9o+", "J9o+", "T9o", "98o"],
-      "BTN-15": ["22+", "A2s+", "K2s+", "Q5s+", "J7s+", "T7s+", "97s+", "86s+", "75s+", "64s+", "54s", "A2o+", "K6o+", "Q8o+", "J9o+", "T9o"],
-      "CO-15": ["22+", "A5s+", "K9s+", "Q9s+", "JTs", "T9s", "A9o+", "KTo+", "QJo"],
-      "HJ-15": ["33+", "A8s+", "KTs+", "QTs+", "JTs", "ATo+", "KJo+"],
-      "MP-15": ["44+", "ATs+", "KTs+", "QJs", "AJo+", "KQo"],
-      "UTG-15": ["55+", "AJs+", "KQs", "AQo+"]
+      "BTN-10": [
+        "22","33","44","55","66","77","88","99","TT","JJ","QQ","KK","AA",
+        "A2s","A3s","A4s","A5s","A6s","A7s","A8s","A9s","ATs","AJs","AQs","AKs",
+        "K2s","K3s","K4s","K5s","K6s","K7s","K8s","K9s","KTs","KJs","KQs",
+        "Q4s","Q5s","Q6s","Q7s","Q8s","Q9s","QTs","QJs",
+        "J7s","J8s","J9s","JTs",
+        "T7s","T8s","T9s",
+        "97s","98s",
+        "86s","87s",
+        "75s","76s",
+        "64s","65s",
+        "54s",
+        "A2o","A3o","A4o","A5o","A6o","A7o","A8o","A9o","ATo","AJo","AQo","AKo",
+        "K7o","K8o","K9o","KTo","KJo","KQo",
+        "Q9o","QTo","QJo",
+        "J9o","JTo",
+        "T9o"
+      ]
     };
-
-    function expandirRange(rangeSimples) {
-      const expandido = [];
-      rangeSimples.forEach(item => {
-        if (todasAsMaos.includes(item)) {
-          expandido.push(item);
-        } else if (item.endsWith('+')) {
-          const tipo = item.slice(-1); // s, o ou nada
-          const base = item.slice(0, -1);
-          let ativar = false;
-          for (const mao of todasAsMaos) {
-            if (mao === base) ativar = true;
-            if (ativar && mao.includes(base[0]) && (mao.endsWith(tipo) || tipo === '')) {
-              expandido.push(mao);
-            }
-          }
-        }
-      });
-      return expandido;
-    }
 
     function mostrarRange() {
       const posicao = document.getElementById("posicao").value;
       const stack = document.getElementById("stack").value;
       const chave = `${posicao}-${stack}`;
       const grade = document.getElementById("grade-range");
+      const range = ranges[chave] || [];
+
       grade.innerHTML = "";
-
-      const rangeBruto = ranges[chave] || [];
-      const range = expandirRange(rangeBruto);
-
       todasAsMaos.forEach(mao => {
         const div = document.createElement("div");
         div.textContent = mao;
+        div.classList.add("mao");
         if (range.includes(mao)) div.classList.add("ativo");
         grade.appendChild(div);
       });
