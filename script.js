@@ -1,52 +1,24 @@
-const hands = {
-  "AKs": "Raise", "AQs": "Raise", "AJs": "Raise", "ATs": "Raise", "A9s": "Call",
-  "KQs": "Raise", "KJs": "Raise", "KTs": "Call", "QJs": "Call",
-  "JTs": "Call", "T9s": "Call", "98s": "Call", "87s": "Call", "76s": "Call",
-  "AKo": "Raise", "AQo": "Raise", "AJo": "Call", "KQo": "Call"
-};
+const suits = ['♠', '♥', '♦', '♣'];
+const values = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2'];
 
-function getRandomHand() {
-  const keys = Object.keys(hands);
-  const randomKey = keys[Math.floor(Math.random() * keys.length)];
-  return randomKey;
+function getRandomCard() {
+  const suit = suits[Math.floor(Math.random() * suits.length)];
+  const value = values[Math.floor(Math.random() * values.length)];
+  return `${value}${suit}`;
 }
 
-function displayHand(hand) {
-  const rank1 = hand[0];
-  const rank2 = hand[1];
-  const suited = hand[2] === "s";
+function generateHand() {
+  let card1 = getRandomCard();
+  let card2 = getRandomCard();
 
-  const suits = ["♠", "♥", "♦", "♣"];
-  const suit1 = suits[Math.floor(Math.random() * 4)];
-  let suit2 = suits[Math.floor(Math.random() * 4)];
-
-  if (suited) {
-    suit2 = suit1;
-  } else {
-    while (suit2 === suit1) {
-      suit2 = suits[Math.floor(Math.random() * 4)];
-    }
+  // Ensure card1 ≠ card2
+  while (card1 === card2) {
+    card2 = getRandomCard();
   }
 
-  document.getElementById("card1").textContent = `${rank1}${suit1}`;
-  document.getElementById("card2").textContent = `${rank2}${suit2}`;
+  document.getElementById('card1').innerText = card1;
+  document.getElementById('card2').innerText = card2;
 }
 
-function generateNewHand() {
-  const newHand = getRandomHand();
-  displayHand(newHand);
-
-  document.querySelectorAll(".fold-btn, .call-btn, .raise-btn").forEach(btn => {
-    btn.onclick = () => {
-      const action = btn.textContent;
-      const correctAction = hands[newHand];
-      const resultText = action === correctAction ? "✅ Correto!" : `❌ Errado! Ação correta: ${correctAction}`;
-      document.getElementById("result").textContent = resultText;
-    };
-  });
-
-  document.getElementById("result").textContent = "";
-}
-
-// Inicializa primeira mão
-generateNewHand();
+// Gera primeira mão ao carregar
+generateHand();
