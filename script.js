@@ -1,46 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GTO Quiz - CO vs BU</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="header">
-    🧠 GTO Quiz - CO vs BU (40bb)
-  </div>
+const suits = ['♠', '♥', '♦', '♣'];
+const values = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2'];
 
-  <div class="table">
-    <!-- Players -->
-    <div class="player top">UTG</div>
-    <div class="player topright">HJ</div>
-    <div class="player right">CO</div>
-    <div class="player bottomright">
-      BU
-      <div class="dealer-button">D</div>
-    </div>
-    <div class="player bottomleft">SB</div>
-    <div class="player left">BB</div>
+function getRandomCard() {
+  const suit = suits[Math.floor(Math.random() * suits.length)];
+  const value = values[Math.floor(Math.random() * values.length)];
+  return `${value}${suit}`;
+}
 
-    <!-- Cards -->
-    <div class="cards">
-      <div id="card1" class="card">?</div>
-      <div id="card2" class="card">?</div>
-    </div>
-  </div>
+function generateHand() {
+  let card1 = getRandomCard();
+  let card2 = getRandomCard();
 
-  <div class="action-box">
-    <button class="btn fold">Fold</button>
-    <button class="btn call">Call</button>
-    <button class="btn raise">Raise</button>
-    <button class="btn new-hand" onclick="generateHand()">New Hand</button>
-  </div>
+  // Ensure card1 ≠ card2
+  while (card1 === card2) {
+    card2 = getRandomCard();
+  }
 
-  <footer>
-    © 2025 <strong>tztreiner</strong>
-  </footer>
+  document.getElementById('card1').innerText = card1;
+  document.getElementById('card2').innerText = card2;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+// Gera primeira mão ao carregar
+generateHand();
