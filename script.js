@@ -10,46 +10,46 @@ const range = {
   'A9s': 'call', 'A8s': 'call', 'A5s': 'call', 'A4s': 'call',
 };
 
-function gerarMao() {
-  const cartas = Object.keys(range);
-  const index = Math.floor(Math.random() * cartas.length);
-  return cartas[index];
+function generateHand() {
+  const hands = Object.keys(range);
+  const index = Math.floor(Math.random() * hands.length);
+  return hands[index];
 }
 
-let maoAtual = '';
+let currentHand = '';
 
-function mostrarCartas(mao) {
-  const naipes = ['♥️', '♠️', '♦️', '♣️'];
-  const carta1 = mao[0];
-  const carta2 = mao[1];
-  const suited = mao[2] === 's';
-  const off = mao[2] === 'o';
-  const naipe = naipes[Math.floor(Math.random() * 4)];
-  const naipe2 = suited ? naipe : naipes.find(n => n !== naipe);
+function displayCards(hand) {
+  const suits = ['♥️', '♠️', '♦️', '♣️'];
+  const c1 = hand[0];
+  const c2 = hand[1];
+  const suited = hand[2] === 's';
+  const offsuit = hand[2] === 'o';
+  const suit1 = suits[Math.floor(Math.random() * 4)];
+  const suit2 = suited ? suit1 : suits.find(s => s !== suit1);
 
   document.getElementById('cards').innerHTML = `
-    ${carta1} ${naipe} ${carta2} ${naipe2}
+    ${c1} ${suit1} ${c2} ${suit2}
   `;
 }
 
-function novaMao() {
-  document.getElementById('resultado').textContent = '';
-  maoAtual = gerarMao();
-  mostrarCartas(maoAtual);
+function newHand() {
+  document.getElementById('result').textContent = '';
+  currentHand = generateHand();
+  displayCards(currentHand);
 }
 
-function responder(acao) {
-  if (!maoAtual) return;
-  const correta = range[maoAtual];
-  const resultado = document.getElementById('resultado');
-  if (acao === correta) {
-    resultado.textContent = '✅ Jogada Correta!';
-    resultado.style.color = 'lime';
+function answer(action) {
+  if (!currentHand) return;
+  const correct = range[currentHand];
+  const result = document.getElementById('result');
+  if (action === correct) {
+    result.textContent = '✅ Correct play!';
+    result.style.color = 'lime';
   } else {
-    resultado.textContent = `❌ Errado! Correto seria: ${correta.toUpperCase()}`;
-    resultado.style.color = 'red';
+    result.textContent = `❌ Incorrect! Correct action: ${correct.toUpperCase()}`;
+    result.style.color = 'red';
   }
 }
 
-// Inicia com uma mão
-novaMao();
+// Start with a hand
+newHand();
