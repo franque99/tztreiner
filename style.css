@@ -1,78 +1,67 @@
 body {
   font-family: Arial, sans-serif;
-  background: #0d0d0d;
-  color: #f2f2f2;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
 
 header {
-  background: #1a1a1a;
-  padding: 20px;
-  text-align: center;
+  padding: 2rem 1rem;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
-  color: #00ffcc;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #1e1e1e;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #00ffcc33;
-}
-
-.quiz h2 {
-  text-align: center;
-  color: #00ffcc;
-}
-
-.cards {
-  font-size: 48px;
-  text-align: center;
-  margin: 20px 0;
+#cards {
+  font-size: 2rem;
+  margin-top: 1rem;
 }
 
 .buttons {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.05);
 }
 
-button:nth-child(1) { background-color: #ff4d4d; } /* Fold */
-button:nth-child(2) { background-color: #ffd11a; } /* Call */
-button:nth-child(3) { background-color: #4dff4d; } /* Raise */
+button:nth-child(1) { background-color: #444; color: white; }
+button:nth-child(2) { background-color: #1e90ff; color: white; }
+button:nth-child(3) { background-color: #e63946; color: white; }
 
-.next {
-  display: block;
-  margin: 0 auto;
-  background-color: #00ccff;
-  color: #000;
+.new-hand {
+  background-color: #6a4c93;
+  color: white;
+}
+
+#result {
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 1.5em;
 }
 
 footer {
-  text-align: center;
-  padding: 15px;
-  background: #1a1a1a;
-  margin-top: 30px;
-  font-size: 14px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #ccc;
 }
