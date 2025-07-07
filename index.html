@@ -1,67 +1,31 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tztreiner - GTO Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
+  </header>
 
-header {
-  padding: 2rem 1rem;
-}
+  <main>
+    <div id="cards"></div>
+    <div class="buttons">
+      <button onclick="answer('fold')">Fold</button>
+      <button onclick="answer('call')">Call</button>
+      <button onclick="answer('raise')">Raise</button>
+    </div>
+    <p id="result"></p>
+    <button onclick="newHand()" class="new-hand">New Hand</button>
+  </main>
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
+  <footer>
+    <p>© 2025 <strong>tztreiner</strong></p>
+  </footer>
 
-#cards {
-  font-size: 2rem;
-  margin-top: 1rem;
-}
-
-.buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-button {
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-button:nth-child(1) { background-color: #444; color: white; }
-button:nth-child(2) { background-color: #1e90ff; color: white; }
-button:nth-child(3) { background-color: #e63946; color: white; }
-
-.nova-mao {
-  background-color: #6a4c93;
-  color: white;
-}
-
-#resultado {
-  font-size: 1.2rem;
-  font-weight: bold;
-  min-height: 1.5em;
-}
-
-footer {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  font-size: 0.8rem;
-  color: #ccc;
-}
+  <script src="script.js"></script>
+</body>
+</html>
