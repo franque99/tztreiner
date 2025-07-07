@@ -1,24 +1,57 @@
-const suits = ['♠', '♥', '♦', '♣'];
-const values = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2'];
+// Exemplo de range GTO simplificado para CO vs BU com 40bb
+const gtoRange = {
+  "AKs": "Raise",
+  "AQs": "Raise",
+  "AJs": "Raise",
+  "ATs": "Call",
+  "KQs": "Raise",
+  "KJs": "Call",
+  "QJs": "Call",
+  "JTs": "Call",
+  "TT": "Raise",
+  "99": "Call",
+  "88": "Call",
+  "77": "Fold",
+  "A2s": "Fold",
+  "65s": "Fold",
+  "KTo": "Fold",
+  "QTo": "Fold",
+  "J9s": "Fold"
+};
 
-function getRandomCard() {
-  const suit = suits[Math.floor(Math.random() * suits.length)];
-  const value = values[Math.floor(Math.random() * values.length)];
-  return `${value}${suit}`;
+const hands = Object.keys(gtoRange);
+let currentHand = "";
+
+const handDisplay = document.getElementById("hand");
+const feedback = document.getElementById("feedback");
+
+function getRandomHand() {
+  const index = Math.floor(Math.random() * hands.length);
+  return hands[index];
 }
 
-function generateHand() {
-  let card1 = getRandomCard();
-  let card2 = getRandomCard();
+function showNewHand() {
+  currentHand = getRandomHand();
+  handDisplay.textContent = currentHand;
+  feedback.textContent = "";
+}
 
-  // Ensure card1 ≠ card2
-  while (card1 === card2) {
-    card2 = getRandomCard();
+function checkAnswer(action) {
+  const correctAction = gtoRange[currentHand];
+  if (action === correctAction) {
+    feedback.textContent = "✔️ Correto!";
+    feedback.style.color = "lime";
+  } else {
+    feedback.textContent = `❌ Errado! Correto: ${correctAction}`;
+    feedback.style.color = "red";
   }
-
-  document.getElementById('card1').innerText = card1;
-  document.getElementById('card2').innerText = card2;
 }
 
-// Gera primeira mão ao carregar
-generateHand();
+// Botões
+document.getElementById("foldBtn").onclick = () => checkAnswer("Fold");
+document.getElementById("callBtn").onclick = () => checkAnswer("Call");
+document.getElementById("raiseBtn").onclick = () => checkAnswer("Raise");
+document.getElementById("newHandBtn").onclick = showNewHand;
+
+// Inicializa primeira mão
+showNewHand();
