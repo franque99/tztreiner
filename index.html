@@ -3,105 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>tztreiner - GTO MTT Trainer</title>
+  <title>tztreiner - GTO Quiz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>tztreiner - Treinador GTO de MTTs</h1>
+    <h1>🧠 Quiz GTO - CO vs BU (40bb)</h1>
   </header>
 
-  <main class="container">
-    <section class="quiz">
-      <h2>🧠 Quiz GTO - CO vs BU (40bb)</h2>
-      <div class="cards" id="cards">♠️ ♠️</div>
-      <div class="buttons">
-        <button onclick="handleAction('Fold')">Fold</button>
-        <button onclick="handleAction('Call')">Call</button>
-        <button onclick="handleAction('Raise')">Raise</button>
-      </div>
-      <button class="next" onclick="nextHand()">Nova Mão</button>
-    </section>
+  <main>
+    <div id="cards"></div>
+    <div class="buttons">
+      <button onclick="responder('fold')">Fold</button>
+      <button onclick="responder('call')">Call</button>
+      <button onclick="responder('raise')">Raise</button>
+    </div>
+    <p id="resultado"></p>
+    <button onclick="novaMao()" class="nova-mao">Nova Mão</button>
   </main>
 
   <footer>
-    <p>&copy; 2025 tztreiner</p>
+    <p>© 2025 <strong>tztreiner</strong></p>
   </footer>
 
-  <script>
-    const gtoRanges = {
-      '40bb': {
-        'CO_vs_BU': {
-          'Q2s': 'Fold',
-          'AQs': 'Call',
-          '88': 'Raise',
-          'KTs': 'Call',
-          'J9s': 'Fold',
-          'A2s': 'Raise',
-          'QJo': 'Call',
-          'T9s': 'Raise',
-          'A5s': 'Raise',
-          '77': 'Call',
-          'KQo': 'Call',
-          '99': 'Raise',
-          'AJs': 'Raise',
-          'JTs': 'Call',
-        }
-      }
-    };
-
-    let currentHand = {
-      heroHand: '',
-      correctAction: ''
-    };
-
-    function handleAction(action) {
-      const expected = currentHand.correctAction;
-      if (action === expected) {
-        alert(`✔️ Correto! A jogada GTO é ${expected}`);
-      } else {
-        alert(`❌ Errado! A jogada GTO correta é ${expected}`);
-      }
-    }
-
-    function nextHand() {
-      const hands = Object.keys(gtoRanges['40bb']['CO_vs_BU']);
-      const randomHand = hands[Math.floor(Math.random() * hands.length)];
-      const action = gtoRanges['40bb']['CO_vs_BU'][randomHand];
-
-      currentHand.heroHand = randomHand;
-      currentHand.correctAction = action;
-
-      const cardsDiv = document.getElementById('cards');
-      cardsDiv.textContent = convertToCards(randomHand);
-    }
-
-    function convertToCards(hand) {
-      const rankMap = {
-        'A': 'A', 'K': 'K', 'Q': 'Q', 'J': 'J',
-        'T': '10', '9': '9', '8': '8', '7': '7',
-        '6': '6', '5': '5', '4': '4', '3': '3', '2': '2'
-      };
-      const suits = ['♠️','♥️','♣️','♦️'];
-      const suit = suits[Math.floor(Math.random() * suits.length)];
-
-      const suited = hand.endsWith('s');
-      const offsuit = hand.endsWith('o');
-      const pair = hand.length === 2;
-
-      const r1 = rankMap[hand[0]];
-      const r2 = rankMap[hand[1]];
-
-      if (pair) {
-        return `${r1}${suit} ${r2}${suit}`;
-      } else if (suited) {
-        return `${r1}♣️ ${r2}♣️`;
-      } else {
-        return `${r1}♣️ ${r2}♦️`;
-      }
-    }
-
-    window.onload = nextHand;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
