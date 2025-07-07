@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>tztreiner - GTO Quiz</title>
+  <title>GTO Quiz - CO vs BU (40bb)</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
-  </header>
+  <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
 
-  <main>
-    <div class="table">
-      <div id="hand" class="hand"></div>
-      <div class="buttons">
-        <button onclick="checkAnswer('fold')" class="btn red">Fold</button>
-        <button onclick="checkAnswer('call')" class="btn yellow">Call</button>
-        <button onclick="checkAnswer('raise')" class="btn green">Raise</button>
-      </div>
-      <div id="result" class="result"></div>
-      <button onclick="newHand()" class="new-hand">New Hand</button>
+  <!-- MESA COM JOGADORES -->
+  <div class="table">
+    <div class="player" id="UTG">UTG</div>
+    <div class="player" id="MP">MP</div>
+    <div class="player" id="CO">CO</div>
+    <div class="player" id="BU">BU</div>
+    <div class="player" id="SB">SB</div>
+    <div class="player" id="BB">BB</div>
+
+    <div id="hero-cards">
+      <div class="card" id="card1">A♠</div>
+      <div class="card" id="card2">K♠</div>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <p>© 2025 <strong>tztreiner</strong></p>
-  </footer>
+  <!-- BLOCOS DE AÇÃO -->
+  <div class="quiz-box">
+    <button class="fold-btn">Fold</button>
+    <button class="call-btn">Call</button>
+    <button class="raise-btn">Raise</button>
+    <br><br>
+    <button onclick="generateNewHand()">New Hand</button>
+    <p id="result"></p>
+  </div>
+
+  <footer>© 2025 <strong>tztreiner</strong></footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
