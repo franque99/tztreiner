@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GTO Quiz - CO vs BU (40bb)</title>
+  <title>GTO Quiz - CO vs BU</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🧠 GTO Quiz - CO vs BU (40bb)</h1>
+  <div class="header">
+    🧠 GTO Quiz - CO vs BU (40bb)
+  </div>
 
-  <!-- MESA COM JOGADORES -->
   <div class="table">
-    <div class="player" id="UTG">UTG</div>
-    <div class="player" id="MP">MP</div>
-    <div class="player" id="CO">CO</div>
-    <div class="player" id="BU">BU</div>
-    <div class="player" id="SB">SB</div>
-    <div class="player" id="BB">BB</div>
+    <div class="player top">UTG</div>
+    <div class="player topright">HJ</div>
+    <div class="player right">CO</div>
+    <div class="player bottomright">BU</div>
+    <div class="player bottomleft">SB</div>
+    <div class="player left">BB</div>
+    <div class="dealer-button" id="dealer">D</div>
 
-    <div id="hero-cards">
-      <div class="card" id="card1">A♠</div>
-      <div class="card" id="card2">K♠</div>
+    <div class="cards">
+      <div id="card1" class="card">?</div>
+      <div id="card2" class="card">?</div>
     </div>
   </div>
 
-  <!-- BLOCOS DE AÇÃO -->
-  <div class="quiz-box">
-    <button class="fold-btn">Fold</button>
-    <button class="call-btn">Call</button>
-    <button class="raise-btn">Raise</button>
-    <br><br>
-    <button onclick="generateNewHand()">New Hand</button>
-    <p id="result"></p>
+  <div class="action-box">
+    <button class="btn fold">Fold</button>
+    <button class="btn call">Call</button>
+    <button class="btn raise">Raise</button>
+    <button class="btn new-hand" onclick="generateHand()">New Hand</button>
   </div>
 
-  <footer>© 2025 <strong>tztreiner</strong></footer>
+  <footer>
+    © 2025 <strong>tztreiner</strong>
+  </footer>
 
   <script src="script.js"></script>
 </body>
